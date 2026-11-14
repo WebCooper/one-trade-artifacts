@@ -1103,7 +1103,19 @@
       "consignee_address",
       "consignee_country",
       "commodities"
-    ]
+    ],
+    "if": {
+      "properties": { "certificate_type": { "const": "re-export" } },
+      "required": ["certificate_type"]
+    },
+    "then": {
+      "required": ["re_export"],
+      "properties": {
+        "re_export": {
+          "required": ["original_certificate_form", "packing", "containers"]
+        }
+      }
+    }
   },
   "uiSchema": {
     "type": "Categorization",
